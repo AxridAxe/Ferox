@@ -39,4 +39,22 @@ export const sources: Source[] = [
     feedUrl: "https://www.rte.ie/feeds/rss/?index=/news",
     ownership: ownershipGroups.rte,
   },
+  {
+    id: "irish-sun",
+    name: "The Irish Sun",
+    feedUrl: "https://www.thesun.ie/feed/",
+    ownership: ownershipGroups.newsUk,
+  },
+  {
+    id: "belfast-telegraph",
+    name: "Belfast Telegraph",
+    feedUrl: "https://www.belfasttelegraph.co.uk/rss/",
+    ownership: ownershipGroups.mediahuis,
+  },
+  {
+    id: "irish-news",
+    name: "The Irish News",
+    feedUrl: "https://www.irishnews.com/arc/outboundfeeds/rss/",
+    ownership: ownershipGroups.fitzpatrickFamily,
+  },
 ];

@@ -43,4 +43,18 @@ export const ownershipGroups: Record<string, OwnershipGroup> = {
     note: "Ireland's statutory public-service broadcaster, funded via TV licence fee and state grants.",
     source: "https://en.wikipedia.org/wiki/RT%C3%89",
   },
+  newsUk: {
+    id: "newsUk",
+    name: "News UK",
+    type: "private-foreign",
+    note: "Part of News Corp (Rupert Murdoch's media group), also publisher of The Sun and The Times in the UK.",
+    source: "https://en.wikipedia.org/wiki/News_UK",
+  },
+  fitzpatrickFamily: {
+    id: "fitzpatrickFamily",
+    name: "Fitzpatrick family / IntoMedia",
+    type: "private-domestic",
+    note: "The Irish News (Belfast) has been independently, family-owned since 1996, distinct from both Mediahuis and the Irish Times Group.",
+    source: "https://en.wikipedia.org/wiki/The_Irish_News",
+  },
 };

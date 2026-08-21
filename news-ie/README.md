@@ -45,17 +45,19 @@ npm run dev
 
 ## Known limitation
 
-The Irish Independent's RSS feed returns 403 to this server's requests
-specifically (curl succeeds; Node's fetch doesn't), most likely
-fingerprint-based bot protection rather than anything about the request
-itself. Rather than working around their anti-bot measures, this source
-is currently excluded — the app degrades gracefully and runs on the
-remaining four.
+Three registered sources — Irish Independent, Belfast Telegraph (both
+Mediahuis), and The Irish Sun (News UK) — currently return 403 to this
+server's requests specifically (curl succeeds; Node's fetch doesn't),
+most likely fingerprint-based bot protection rather than anything about
+the request itself. Rather than working around their anti-bot measures,
+these stay registered in `sources.ts` but are silently skipped each
+refresh — the app degrades gracefully and runs on the five that work
+(Irish Times, Irish Examiner, TheJournal.ie, RTÉ News, The Irish News).
 
 ## Status
 
-Early scaffold: 4 outlets (Irish Times, Irish Examiner, TheJournal.ie,
-RTÉ News), word-overlap clustering, ownership tags, no styling beyond
-basic readability. Next steps: more outlets, upgrade clustering to
-embeddings via the FeroxAi provider router once story volume grows, and a
-proper front end.
+7 outlets registered, 5 currently reachable, word-overlap clustering,
+ownership tags, no styling beyond basic readability. Next steps: a
+working feed for Business Post (no public RSS path found yet), upgrade
+clustering to embeddings via the FeroxAi provider router once story
+volume grows, and a proper front end.
