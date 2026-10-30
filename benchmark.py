@@ -110,9 +110,10 @@ def bench_one(task, name, iters, level, seed=0, reps=30):
         # one-off runtime/kernel initialisation is not attributed to the model)
         run(slice(0, 1))
         base = peak_rss_mb()
-        with FlopCounterMode(display=False) as fc:
-            out = run(slice(0, 256))
+        out = run(slice(0, 256))
         mem = peak_rss_mb() - base
+        with FlopCounterMode(display=False) as fc:
+            run(slice(0, 256))
         counted = fc.get_total_flops() / 256
         steps = out[1] if iters == "adaptive" else None
         flops = analytic(model, name, iters, b, steps)

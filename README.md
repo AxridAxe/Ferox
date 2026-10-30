@@ -15,6 +15,21 @@ language models.
 - Results, analysis and limitations: [results/RESULTS.md](results/RESULTS.md)
 - Generated tables (all numbers): [results/summary.md](results/summary.md); plots in `results/plots/`
 
+## Headline results (details and caveats in results/RESULTS.md)
+
+- The **looped Transformer (C)** was the only model that extrapolated to harder chain
+  problems, when given more test-time iterations (iteration count picked per level, oracle).
+  Trained on 1–6 hops, it reached 96–99% at 8 hops, and 97% at 12 / 96% at 16 hops with
+  3× training budget. At equal FLOPs it beat an 8-layer non-recurrent Transformer on 2 of 3
+  seeds, with 5× fewer parameters.
+- The **latent recursive reasoner (D)**, a TRM-style two-state recursion with deep supervision
+  and halting, showed **no** advantage. It stayed at chance on chain at the matched training
+  budget, did not extrapolate even with 3× budget, and on addition solved everything in its
+  first step. Its halting head was over-confident out of distribution.
+- The **scratchpad model (B)** was the most expensive per answer (2–3× FLOPs, 10–30× batch-1
+  latency) and did not generalise better.
+- On addition, a plain 4-layer Transformer extrapolated best. No model handled 24+ digits.
+
 ## Models (`models/`)
 
 All four use the same pre-LN Transformer block (d=64, 4 heads, MLP 4d), the same input

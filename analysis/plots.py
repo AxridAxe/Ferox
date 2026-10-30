@@ -242,6 +242,39 @@ def summary(runs):
     json.dump(js, open("results/summary.json", "w"), indent=1)
 
 
+def plot_diag(runs):
+    """Chain, 3x-budget diagnostic: accuracy vs test-time iterations per difficulty (seed-level curves)."""
+    task = "chain"
+    have = [n for n in ("C_3x", "D_3x") if (task, n) in runs]
+    if not have:
+        return
+    levels = TASKS[task].EVAL_LEVELS
+    colors = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6"]
+    fig, axes = plt.subplots(1, len(have) + 1, figsize=(14, 3.8), sharey=True)
+    for ax, n in zip(axes, have):
+        for seed, r in sorted(runs[(task, n)].items()):
+            for c, (l, m) in zip(colors, zip(levels, "os^Dv*P")):
+                pts = r["eval"]["levels"][str(l)]["points"]
+                ax.plot([p["iters"] for p in pts], [p["acc"] for p in pts], color=c, marker=m, markersize=4,
+                        linestyle="-" if seed == 0 else "--", label=f"{l} hops" if seed == 0 else None)
+        ax.set_xscale("log", base=2); ax.set_title(f"{n} (3x budget; solid s0, dashed s1)", fontsize=9)
+        ax.set_xlabel("test-time iterations (T for C, outer steps S for D)")
+    axes[0].set_ylabel("accuracy"); axes[0].legend(fontsize=7, frameon=False)
+    ax = axes[-1]
+    for n, key in [("A_3x", "A"), ("C_3x", "C"), ("D_3x", "D")]:
+        if (task, n) not in runs:
+            continue
+        for seed, r in sorted(runs[(task, n)].items()):
+            best = [max(p["acc"] for p in r["eval"]["levels"][str(l)]["points"]) for l in levels]
+            ax.plot(levels, best, color=STYLE[key]["color"], marker=STYLE[key]["marker"],
+                    linestyle="-" if seed == 0 else "--", label=f"{n} s{seed}")
+    ax.axvline(TASKS[task].OOD_FROM - 0.5, color="#8a8984", linestyle="--", linewidth=1)
+    ax.set_xscale("log", base=2); ax.set_xticks(levels); ax.set_xticklabels(levels)
+    ax.set_xlabel("hops"); ax.set_title("best over test-time iterations (oracle T/S)", fontsize=9)
+    ax.legend(fontsize=7, frameon=False)
+    fig.tight_layout(); fig.savefig(f"{OUT}/chain_3x_diagnostic.png", dpi=150); plt.close(fig)
+
+
 def plot_latency():
     if not os.path.exists("results/benchmark.json"):
         return
@@ -271,6 +304,7 @@ if __name__ == "__main__":
         plot_difficulty(runs, task)
         plot_acc_flops(runs, task)
         plot_ablations(runs, task)
+    plot_diag(runs)
     plot_latency()
     summary(runs)
     print(open("results/summary.md").read())

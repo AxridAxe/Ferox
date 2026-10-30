@@ -13,9 +13,9 @@
    "level": 8,
    "flops_analytic": 3769344,
    "flops_counted": 3769344.0,
-   "latency_b1_ms": 0.8776570002737571,
-   "latency_b256_ms": 0.16082468750155954,
-   "peak_mem_mb": 93.44921875,
+   "latency_b1_ms": 1.0176750001846813,
+   "latency_b256_ms": 0.15067137109170403,
+   "peak_mem_mb": 9.45703125,
    "params": 231936
   },
   {
@@ -25,9 +25,9 @@
    "level": 8,
    "flops_analytic": 7391232,
    "flops_counted": 7391232.0,
-   "latency_b1_ms": 2.488989999619662,
-   "latency_b256_ms": 0.301990933593288,
-   "peak_mem_mb": 94.04296875,
+   "latency_b1_ms": 1.5543340000476746,
+   "latency_b256_ms": 0.24700894140750052,
+   "peak_mem_mb": 9.14453125,
    "params": 430848
   },
   {
@@ -37,9 +37,9 @@
    "level": 8,
    "flops_analytic": 9703424,
    "flops_counted": 9703424.0,
-   "latency_b1_ms": 24.06324349976785,
-   "latency_b256_ms": 0.7180866835909683,
-   "peak_mem_mb": 104.5546875,
+   "latency_b1_ms": 22.03259749967401,
+   "latency_b256_ms": 0.5856270624988724,
+   "peak_mem_mb": 19.1875,
    "params": 231936
   },
   {
@@ -49,9 +49,9 @@
    "level": 8,
    "flops_analytic": 7391232,
    "flops_counted": 7391232.0,
-   "latency_b1_ms": 2.271729500080255,
-   "latency_b256_ms": 0.4159665546872304,
-   "peak_mem_mb": 94.88671875,
+   "latency_b1_ms": 1.7449144997954136,
+   "latency_b256_ms": 0.29130606250049595,
+   "peak_mem_mb": 11.171875,
    "params": 82880
   },
   {
@@ -61,9 +61,9 @@
    "level": 8,
    "flops_analytic": 14635008,
    "flops_counted": 14635008.0,
-   "latency_b1_ms": 2.7014070001314394,
-   "latency_b256_ms": 0.6284961562492697,
-   "peak_mem_mb": 95.328125,
+   "latency_b1_ms": 3.1094605001271702,
+   "latency_b256_ms": 0.5474112265630993,
+   "peak_mem_mb": 10.609375,
    "params": 82880
   },
   {
@@ -73,9 +73,9 @@
    "level": 8,
    "flops_analytic": 5728000,
    "flops_counted": 5728000.0,
-   "latency_b1_ms": 1.4482450001196412,
-   "latency_b256_ms": 0.22886524218534987,
-   "peak_mem_mb": 98.765625,
+   "latency_b1_ms": 1.3765640005658497,
+   "latency_b256_ms": 0.2775023867194193,
+   "peak_mem_mb": 12.18359375,
    "params": 83073
   },
   {
@@ -85,9 +85,9 @@
    "level": 8,
    "flops_analytic": 17184000,
    "flops_counted": 17184000.0,
-   "latency_b1_ms": 4.934675500408048,
-   "latency_b256_ms": 0.7211114882821335,
-   "peak_mem_mb": 98.53125,
+   "latency_b1_ms": 5.437965000055556,
+   "latency_b256_ms": 0.7662396445304864,
+   "peak_mem_mb": 14.43359375,
    "params": 83073
   },
   {
@@ -97,9 +97,9 @@
    "level": 8,
    "flops_analytic": 2864000.0,
    "flops_counted": 2864000.0,
-   "latency_b1_ms": 0.9523239996269695,
-   "latency_b256_ms": 0.14344329296989144,
-   "peak_mem_mb": 95.19140625,
+   "latency_b1_ms": 1.3081134998174093,
+   "latency_b256_ms": 0.1339949687491071,
+   "peak_mem_mb": 10.6953125,
    "params": 83073
   },
   {
@@ -109,9 +109,9 @@
    "level": 24,
    "flops_analytic": 10880000,
    "flops_counted": 10880000.0,
-   "latency_b1_ms": 1.2276685001779697,
-   "latency_b256_ms": 0.4099054023427584,
-   "peak_mem_mb": 112.8359375,
+   "latency_b1_ms": 2.3928660002638935,
+   "latency_b256_ms": 0.3991883632821214,
+   "peak_mem_mb": 31.6328125,
    "params": 231936
   },
   {
@@ -121,9 +121,9 @@
    "level": 24,
    "flops_analytic": 21350400,
    "flops_counted": 21350400.0,
-   "latency_b1_ms": 2.682682500108058,
-   "latency_b256_ms": 0.8211442304713046,
-   "peak_mem_mb": 112.87890625,
+   "latency_b1_ms": 2.238895999653323,
+   "latency_b256_ms": 0.7202469023432911,
+   "peak_mem_mb": 29.98828125,
    "params": 430848
   },
   {
@@ -133,9 +133,9 @@
    "level": 24,
    "flops_analytic": 31698944,
    "flops_counted": 31698944.0,
-   "latency_b1_ms": 53.86332349962686,
-   "latency_b256_ms": 2.8024066289056293,
-   "peak_mem_mb": 133.43359375,
+   "latency_b1_ms": 64.39739400002509,
+   "latency_b256_ms": 2.9838338007799337,
+   "peak_mem_mb": 47.02734375,
    "params": 231936
   },
   {
@@ -145,9 +145,9 @@
    "level": 24,
    "flops_analytic": 21350400,
    "flops_counted": 21350400.0,
-   "latency_b1_ms": 1.627909500257374,
-   "latency_b256_ms": 0.9612746875014011,
-   "peak_mem_mb": 113.51953125,
+   "latency_b1_ms": 1.7796785000427917,
+   "latency_b256_ms": 0.8055848984369618,
+   "peak_mem_mb": 31.30859375,
    "params": 82880
   },
   {
@@ -157,9 +157,9 @@
    "level": 24,
    "flops_analytic": 42291200,
    "flops_counted": 42291200.0,
-   "latency_b1_ms": 4.774986499342049,
-   "latency_b256_ms": 1.7036129335927797,
-   "peak_mem_mb": 116.5703125,
+   "latency_b1_ms": 3.1697184999757155,
+   "latency_b256_ms": 1.7226738359354954,
+   "peak_mem_mb": 33.109375,
    "params": 82880
   },
   {
@@ -169,9 +169,9 @@
    "level": 24,
    "flops_analytic": 16525056,
    "flops_counted": 16525056.0,
-   "latency_b1_ms": 2.5429454999539303,
-   "latency_b256_ms": 0.5876481992181937,
-   "peak_mem_mb": 122.125,
+   "latency_b1_ms": 2.069161500003247,
+   "latency_b256_ms": 0.7237219960956054,
+   "peak_mem_mb": 33.72265625,
    "params": 83073
   },
   {
@@ -181,9 +181,9 @@
    "level": 24,
    "flops_analytic": 49575168,
    "flops_counted": 49575168.0,
-   "latency_b1_ms": 4.774855000050593,
-   "latency_b256_ms": 1.7686233789078187,
-   "peak_mem_mb": 127.0859375,
+   "latency_b1_ms": 6.03739449979912,
+   "latency_b256_ms": 2.0349346406227653,
+   "peak_mem_mb": 37.78125,
    "params": 83073
   },
   {
@@ -193,9 +193,9 @@
    "level": 24,
    "flops_analytic": 8262528.0,
    "flops_counted": 8262528.0,
-   "latency_b1_ms": 1.2570535000122618,
-   "latency_b256_ms": 0.34780728515926285,
-   "peak_mem_mb": 116.6171875,
+   "latency_b1_ms": 1.4989285000410746,
+   "latency_b256_ms": 0.38751670312819897,
+   "peak_mem_mb": 30.9921875,
    "params": 83073
   },
   {
@@ -205,9 +205,9 @@
    "level": 6,
    "flops_analytic": 6374400,
    "flops_counted": 6374400.0,
-   "latency_b1_ms": 0.8481530003336957,
-   "latency_b256_ms": 0.20196007421802165,
-   "peak_mem_mb": 95.515625,
+   "latency_b1_ms": 0.6070659997021721,
+   "latency_b256_ms": 0.20220063281328748,
+   "peak_mem_mb": 14.2578125,
    "params": 231936
   },
   {
@@ -217,9 +217,9 @@
    "level": 6,
    "flops_analytic": 12503040,
    "flops_counted": 12503040.0,
-   "latency_b1_ms": 1.3829754998369026,
-   "latency_b256_ms": 0.36970218359400064,
-   "peak_mem_mb": 94.03125,
+   "latency_b1_ms": 1.4699510002174065,
+   "latency_b256_ms": 0.4189266914060852,
+   "peak_mem_mb": 13.19140625,
    "params": 430848
   },
   {
@@ -229,9 +229,9 @@
    "level": 6,
    "flops_analytic": 11553792,
    "flops_counted": 11553792.0,
-   "latency_b1_ms": 6.676716999663768,
-   "latency_b256_ms": 0.5892267851557165,
-   "peak_mem_mb": 106.7109375,
+   "latency_b1_ms": 8.427971500168496,
+   "latency_b256_ms": 0.5987937304681168,
+   "peak_mem_mb": 23.01171875,
    "params": 231936
   },
   {
@@ -241,9 +241,9 @@
    "level": 6,
    "flops_analytic": 12503040,
    "flops_counted": 12503040.0,
-   "latency_b1_ms": 1.405396499649214,
-   "latency_b256_ms": 0.4376816835929276,
-   "peak_mem_mb": 96.8125,
+   "latency_b1_ms": 1.0695744999793533,
+   "latency_b256_ms": 0.36210776953282675,
+   "peak_mem_mb": 15.3515625,
    "params": 82880
   },
   {
@@ -253,9 +253,9 @@
    "level": 6,
    "flops_analytic": 24760320,
    "flops_counted": 24760320.0,
-   "latency_b1_ms": 2.530084999762039,
-   "latency_b256_ms": 0.8600675664069968,
-   "peak_mem_mb": 96.6796875,
+   "latency_b1_ms": 2.3891255000307865,
+   "latency_b256_ms": 0.8819748867203714,
+   "peak_mem_mb": 17.1796875,
    "params": 82880
   },
   {
@@ -265,9 +265,9 @@
    "level": 6,
    "flops_analytic": 9684736,
    "flops_counted": 9684736.0,
-   "latency_b1_ms": 1.1672440000438655,
-   "latency_b256_ms": 0.3263469335941238,
-   "peak_mem_mb": 102.5703125,
+   "latency_b1_ms": 1.4017569997122337,
+   "latency_b256_ms": 0.4017074062510062,
+   "peak_mem_mb": 19.0625,
    "params": 83073
   },
   {
@@ -277,9 +277,9 @@
    "level": 6,
    "flops_analytic": 29054208,
    "flops_counted": 29054208.0,
-   "latency_b1_ms": 2.995219999775145,
-   "latency_b256_ms": 0.8512201054706736,
-   "peak_mem_mb": 103.9765625,
+   "latency_b1_ms": 5.908638000164501,
+   "latency_b256_ms": 1.0182459218732731,
+   "peak_mem_mb": 20.0,
    "params": 83073
   },
   {
@@ -289,9 +289,9 @@
    "level": 6,
    "flops_analytic": 154955776.0,
    "flops_counted": 154955776.0,
-   "latency_b1_ms": 15.221430499877897,
-   "latency_b256_ms": 5.032066339843766,
-   "peak_mem_mb": 107.23046875,
+   "latency_b1_ms": 19.905090000065684,
+   "latency_b256_ms": 5.129480300780642,
+   "peak_mem_mb": 21.96875,
    "params": 83073
   },
   {
@@ -301,9 +301,9 @@
    "level": 12,
    "flops_analytic": 11805696,
    "flops_counted": 11805696.0,
-   "latency_b1_ms": 0.87822249997771,
-   "latency_b256_ms": 0.29200287499975275,
-   "peak_mem_mb": 112.3359375,
+   "latency_b1_ms": 1.291756000227906,
+   "latency_b256_ms": 0.37675018749894207,
+   "peak_mem_mb": 27.28125,
    "params": 231936
   },
   {
@@ -313,9 +313,9 @@
    "level": 12,
    "flops_analytic": 23169024,
    "flops_counted": 23169024.0,
-   "latency_b1_ms": 1.7240115003005485,
-   "latency_b256_ms": 0.612526292968596,
-   "peak_mem_mb": 108.59375,
+   "latency_b1_ms": 1.955409999936819,
+   "latency_b256_ms": 0.6634113046857237,
+   "peak_mem_mb": 30.28515625,
    "params": 430848
   },
   {
@@ -325,9 +325,9 @@
    "level": 12,
    "flops_analytic": 22606848,
    "flops_counted": 22606848.0,
-   "latency_b1_ms": 14.947326999845245,
-   "latency_b256_ms": 1.1642914375009639,
-   "peak_mem_mb": 127.70703125,
+   "latency_b1_ms": 15.087475499967695,
+   "latency_b256_ms": 1.2946186992195408,
+   "peak_mem_mb": 44.53515625,
    "params": 231936
   },
   {
@@ -337,9 +337,9 @@
    "level": 12,
    "flops_analytic": 23169024,
    "flops_counted": 23169024.0,
-   "latency_b1_ms": 1.7525074999866774,
-   "latency_b256_ms": 0.677700035158324,
-   "peak_mem_mb": 110.55859375,
+   "latency_b1_ms": 2.4771769999460957,
+   "latency_b256_ms": 0.6991311054704852,
+   "peak_mem_mb": 37.1796875,
    "params": 82880
   },
   {
@@ -349,9 +349,9 @@
    "level": 12,
    "flops_analytic": 45895680,
    "flops_counted": 45895680.0,
-   "latency_b1_ms": 2.8304689999458787,
-   "latency_b256_ms": 1.3699235156252598,
-   "peak_mem_mb": 116.01953125,
+   "latency_b1_ms": 2.578942999662104,
+   "latency_b256_ms": 1.5297921328141229,
+   "peak_mem_mb": 37.21484375,
    "params": 82880
   },
   {
@@ -361,9 +361,9 @@
    "level": 12,
    "flops_analytic": 17929984,
    "flops_counted": 17929984.0,
-   "latency_b1_ms": 1.0932760001196584,
-   "latency_b256_ms": 0.39862740625196125,
-   "peak_mem_mb": 125.3203125,
+   "latency_b1_ms": 1.5679484999964188,
+   "latency_b256_ms": 0.5165584960948877,
+   "peak_mem_mb": 35.734375,
    "params": 83073
   },
   {
@@ -373,9 +373,9 @@
    "level": 12,
    "flops_analytic": 53789952,
    "flops_counted": 53789952.0,
-   "latency_b1_ms": 4.295120500501071,
-   "latency_b256_ms": 1.6097787851556689,
-   "peak_mem_mb": 125.484375,
+   "latency_b1_ms": 3.463750999799231,
+   "latency_b256_ms": 1.753278304686745,
+   "peak_mem_mb": 40.546875,
    "params": 83073
   },
   {
@@ -385,9 +385,9 @@
    "level": 12,
    "flops_analytic": 286879744.0,
    "flops_counted": 286879744.0,
-   "latency_b1_ms": 21.400092500243773,
-   "latency_b256_ms": 8.661678703127507,
-   "peak_mem_mb": 123.80078125,
+   "latency_b1_ms": 25.56017150027401,
+   "latency_b256_ms": 9.723844398440207,
+   "peak_mem_mb": 42.36328125,
    "params": 83073
   }
  ]
