@@ -1,0 +1,103 @@
+{
+ "task": "addition",
+ "model": "B",
+ "seed": 1,
+ "levels": {
+  "2": {
+   "level": 2,
+   "ood": false,
+   "points": [
+    {
+     "iters": null,
+     "flops": 2063360,
+     "acc": 1.0,
+     "gen_tokens": 4
+    }
+   ]
+  },
+  "4": {
+   "level": 4,
+   "ood": false,
+   "points": [
+    {
+     "iters": null,
+     "flops": 4573184,
+     "acc": 1.0,
+     "gen_tokens": 8
+    }
+   ]
+  },
+  "6": {
+   "level": 6,
+   "ood": false,
+   "points": [
+    {
+     "iters": null,
+     "flops": 7119872,
+     "acc": 1.0,
+     "gen_tokens": 12
+    }
+   ]
+  },
+  "8": {
+   "level": 8,
+   "ood": false,
+   "points": [
+    {
+     "iters": null,
+     "flops": 9703424,
+     "acc": 1.0,
+     "gen_tokens": 16
+    }
+   ]
+  },
+  "12": {
+   "level": 12,
+   "ood": true,
+   "points": [
+    {
+     "iters": null,
+     "flops": 14981120,
+     "acc": 0.972000002861023,
+     "gen_tokens": 24
+    }
+   ]
+  },
+  "16": {
+   "level": 16,
+   "ood": true,
+   "points": [
+    {
+     "iters": null,
+     "flops": 20406272,
+     "acc": 0.5,
+     "gen_tokens": 32
+    }
+   ]
+  },
+  "24": {
+   "level": 24,
+   "ood": true,
+   "points": [
+    {
+     "iters": null,
+     "flops": 31698944,
+     "acc": 0.0,
+     "gen_tokens": 48
+    }
+   ]
+  },
+  "32": {
+   "level": 32,
+   "ood": true,
+   "points": [
+    {
+     "iters": null,
+     "flops": 43581440,
+     "acc": 0.0,
+     "gen_tokens": 64
+    }
+   ]
+  }
+ }
+}

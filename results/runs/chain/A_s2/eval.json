@@ -1,0 +1,84 @@
+{
+ "task": "chain",
+ "model": "A",
+ "seed": 2,
+ "levels": {
+  "2": {
+   "level": 2,
+   "ood": false,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 2917376,
+     "acc": 1.0
+    }
+   ]
+  },
+  "4": {
+   "level": 4,
+   "ood": false,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 4629504,
+     "acc": 0.9480000138282776
+    }
+   ]
+  },
+  "6": {
+   "level": 6,
+   "ood": false,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 6374400,
+     "acc": 0.10400000214576721
+    }
+   ]
+  },
+  "8": {
+   "level": 8,
+   "ood": true,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 8152064,
+     "acc": 0.08799999952316284
+    }
+   ]
+  },
+  "12": {
+   "level": 12,
+   "ood": true,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 11805696,
+     "acc": 0.0860000029206276
+    }
+   ]
+  },
+  "16": {
+   "level": 16,
+   "ood": true,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 15590400,
+     "acc": 0.08399999886751175
+    }
+   ]
+  },
+  "24": {
+   "level": 24,
+   "ood": true,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 23553024,
+     "acc": 0.08799999952316284
+    }
+   ]
+  }
+ }
+}

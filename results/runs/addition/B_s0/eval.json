@@ -9,7 +9,7 @@
    "points": [
     {
      "iters": null,
-     "flops": 4126.72,
+     "flops": 2063360,
      "acc": 1.0,
      "gen_tokens": 4
     }
@@ -21,7 +21,7 @@
    "points": [
     {
      "iters": null,
-     "flops": 9146.368,
+     "flops": 4573184,
      "acc": 1.0,
      "gen_tokens": 8
     }
@@ -33,7 +33,7 @@
    "points": [
     {
      "iters": null,
-     "flops": 14239.744,
+     "flops": 7119872,
      "acc": 1.0,
      "gen_tokens": 12
     }
@@ -45,7 +45,7 @@
    "points": [
     {
      "iters": null,
-     "flops": 19406.848,
+     "flops": 9703424,
      "acc": 1.0,
      "gen_tokens": 16
     }
@@ -57,7 +57,7 @@
    "points": [
     {
      "iters": null,
-     "flops": 29962.24,
+     "flops": 14981120,
      "acc": 0.9959999918937683,
      "gen_tokens": 24
     }
@@ -69,7 +69,7 @@
    "points": [
     {
      "iters": null,
-     "flops": 40812.544,
+     "flops": 20406272,
      "acc": 0.7020000219345093,
      "gen_tokens": 32
     }
@@ -81,7 +81,7 @@
    "points": [
     {
      "iters": null,
-     "flops": 63397.888,
+     "flops": 31698944,
      "acc": 0.004000000189989805,
      "gen_tokens": 48
     }
@@ -93,7 +93,7 @@
    "points": [
     {
      "iters": null,
-     "flops": 87162.88,
+     "flops": 43581440,
      "acc": 0.0,
      "gen_tokens": 64
     }

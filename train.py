@@ -39,6 +39,10 @@ MODELS = {
     "D_nodeep": dict(arch="D", n_inner=2, S=6, deep=False),  # ablation: loss only at end, full BPTT
     "D_inner1": dict(arch="D", n_inner=1, S=6, deep=True),   # ablation: fewer latent updates
     "D_S12":    dict(arch="D", n_inner=2, S=12, deep=True),  # ablation: longer supervision horizon
+    # post-hoc diagnostic (chain only): identical configs trained with 3x the budget
+    "A_3x":     dict(arch="A", layers=4),
+    "C_3x":     dict(arch="C", T_lo=4, T_hi=12),
+    "D_3x":     dict(arch="D", n_inner=2, S=6, deep=True),
 }
 
 

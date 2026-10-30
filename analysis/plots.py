@@ -137,8 +137,6 @@ def plot_ablations(runs, task):
     fig, axes = plt.subplots(1, 2, figsize=(12, 3.8))
     for ax, family in zip(axes, ["C", "D"]):
         fam = [n for n in names if n.startswith(family)]
-        for j, lvl in enumerate([l for l in levels if l in (TASKS[task].OOD_FROM - 1, levels[-3])]):
-            pass
         for k, n in enumerate(fam):
             ev = runs[(task, n)][0]["eval"]  # ablations are single-seed: compare to seed 0
             lvl_hi = TASKS[task].OOD_FROM - 1 if TASKS[task].OOD_FROM - 1 in levels else levels[2]
@@ -171,6 +169,9 @@ def summary(runs):
         rows = configs(task) + [(n, D_DEFAULT if n.startswith("D") else C_DEFAULT if n.startswith("C") else None,
                                  False, n) for n in ABL if n not in ("C", "D")]
         rows += [(n, None, True, n + "-adaptive") for n in ABL if n.startswith("D") and n != "D"]
+        # post-hoc diagnostic: same configs at 3x the training budget (not budget-matched to the rest)
+        rows += [("A_3x", None, False, "A_3x [3x budget]"), ("C_3x", C_DEFAULT, False, "C_3x [3x budget]"),
+                 ("D_3x", D_DEFAULT, False, "D_3x [3x budget]"), ("D_3x", None, True, "D_3x adaptive [3x budget]")]
         for name, it, ad, key in rows:
             if (task, name) not in runs:
                 continue
@@ -188,6 +189,26 @@ def summary(runs):
             js[f"{task}/{label}"] = dict(acc={l: a[0] for l, a in zip(levels, accs)},
                                          std={l: a[1] for l, a in zip(levels, accs)},
                                          flops={l: a[2] for l, a in zip(levels, accs)})
+        # per-seed view (chain results are bimodal across seeds, so means hide structure)
+        lines.append(f"\n**Per-seed accuracy on {task}** — default config, and in brackets the best over all test-time "
+                     "iteration budgets with the T/S that achieved it (ORACLE selection on the test level: an upper "
+                     "bound on what test-time iteration could give, not a deployable number):\n")
+        lines.append("| run | " + " | ".join(str(l) for l in levels) + " |")
+        lines.append("|---|" + "---|" * len(levels))
+        for name in ["A", "Adeep", "B", "C", "D", "C_fixed", "D_nodeep", "D_inner1", "D_S12", "A_3x", "C_3x", "D_3x"]:
+            for seed, r in sorted(runs.get((task, name), {}).items()):
+                ev = r["eval"]
+                default = {"C": C_DEFAULT, "D": r["train"]["cfg"].get("S")}.get(r["train"]["cfg"]["arch"])
+                cells = []
+                for l in levels:
+                    pts = ev["levels"][str(l)]["points"]
+                    p0 = pts[0] if default is None else next(p for p in pts if p["iters"] == default)
+                    best = max(pts, key=lambda p: p["acc"])
+                    c = f"{100*p0['acc']:.0f}"
+                    if len(pts) > 1:
+                        c += f" [{100*best['acc']:.0f} @{best['iters']}]"
+                    cells.append(c)
+                lines.append(f"| {name} s{seed} | " + " | ".join(cells) + " |")
         # iso-compute comparisons: C/D at the iteration budget closest to A / Adeep / B FLOPs
         lines.append(f"\n**Matched-compute comparison on {task}** (C/D evaluated at the fixed iteration budget whose "
                      "FLOPs are closest to, without exceeding, the reference model's FLOPs; mean over seeds):\n")

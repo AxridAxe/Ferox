@@ -106,7 +106,9 @@ def bench_one(task, name, iters, level, seed=0, reps=30):
     b = eval_sets(task, [level], 256)[level]
     run = make_runner(model, name, iters, b)
     with torch.no_grad():
-        # memory: peak RSS increase during one full batch
+        # memory: peak RSS increase during one full batch (after a batch-1 warm-up so
+        # one-off runtime/kernel initialisation is not attributed to the model)
+        run(slice(0, 1))
         base = peak_rss_mb()
         with FlopCounterMode(display=False) as fc:
             out = run(slice(0, 256))

@@ -49,7 +49,7 @@ def eval_run(task, name, seed, levels=None, size=None):
             seq, f = model.generate(dx, b["dec_forced"])
             ans = b["dec_ans"]
             acc = (seq[:, ans] == dx[:, ans, 2]).all(-1).float().mean().item()
-            r["points"] = [dict(iters=None, flops=f / len(dx), acc=acc,
+            r["points"] = [dict(iters=None, flops=f, acc=acc,  # f is already per answer
                                 gen_tokens=int((~b["dec_forced"]).sum()))]
         else:
             x = torch.from_numpy(b["enc_x"])
