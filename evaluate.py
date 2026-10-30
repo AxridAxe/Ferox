@@ -98,6 +98,7 @@ if __name__ == "__main__":
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--threads", type=int, default=1)
+    ap.add_argument("--levels", type=int, nargs="*", help="override the task's eval levels")
     a = ap.parse_args()
     torch.set_num_threads(a.threads)
     if a.all:
@@ -109,6 +110,6 @@ if __name__ == "__main__":
     else:
         jobs = [(a.task, a.model, a.seed)]
     for task, name, seed in jobs:
-        out = eval_run(task, name, seed)
+        out = eval_run(task, name, seed, a.levels)
         summary = {l: max(p["acc"] for p in r["points"]) for l, r in out["levels"].items()}
         print(task, name, seed, "best acc per level:", {k: round(v, 3) for k, v in summary.items()})

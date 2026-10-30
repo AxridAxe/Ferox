@@ -43,6 +43,7 @@ MODELS = {
     "A_3x":     dict(arch="A", layers=4),
     "C_3x":     dict(arch="C", T_lo=4, T_hi=12),
     "D_3x":     dict(arch="D", n_inner=2, S=6, deep=True),
+    "B_3x":     dict(arch="B", layers=4),
 }
 
 
