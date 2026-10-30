@@ -26,7 +26,7 @@ language models.
   and halting, showed **no** advantage. It stayed at chance on chain at the matched training
   budget, did not extrapolate even with 3× budget, and on addition solved everything in its
   first step. Its halting head was over-confident out of distribution.
-- The **scratchpad model (B)** was the most expensive per answer (2–3× FLOPs, 10–30× batch-1
+- The **scratchpad model (B)** was the most expensive per answer (1.8–2.9× the FLOPs of model A, 10–30× its batch-1
   latency) and did not generalise better.
 - On addition, a plain 4-layer Transformer extrapolated best. No model handled 24+ digits.
 
