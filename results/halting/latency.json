@@ -1,0 +1,62 @@
+{
+ "threads": 1,
+ "seed": 0,
+ "rule": "probe_safe",
+ "tau": 0.9,
+ "results": [
+  {
+   "level": 6,
+   "mode": "probe",
+   "median_ms": 1.179465499944854,
+   "mean_T": 6.875
+  },
+  {
+   "level": 6,
+   "mode": "fixed16",
+   "median_ms": 2.1322459999737475,
+   "mean_T": 16.0
+  },
+  {
+   "level": 6,
+   "mode": "fixed64",
+   "median_ms": 7.92982200005099,
+   "mean_T": 64.0
+  },
+  {
+   "level": 12,
+   "mode": "probe",
+   "median_ms": 2.314448500101207,
+   "mean_T": 12.7
+  },
+  {
+   "level": 12,
+   "mode": "fixed16",
+   "median_ms": 3.544872500015117,
+   "mean_T": 16.0
+  },
+  {
+   "level": 12,
+   "mode": "fixed64",
+   "median_ms": 11.356096499866908,
+   "mean_T": 64.0
+  },
+  {
+   "level": 24,
+   "mode": "probe",
+   "median_ms": 8.534688500049015,
+   "mean_T": 30.45
+  },
+  {
+   "level": 24,
+   "mode": "fixed16",
+   "median_ms": 3.9321629999449215,
+   "mean_T": 16.0
+  },
+  {
+   "level": 24,
+   "mode": "fixed64",
+   "median_ms": 17.774531500208468,
+   "mean_T": 64.0
+  }
+ ]
+}

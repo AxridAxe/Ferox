@@ -114,7 +114,8 @@ def main():
                  f"{c['chosen']['probe']['param']} ({c['chosen']['probe_safe']['param']}) | {h['probe']['train_flops']:.2e} |")
     if learned:
         L += table(learned, base, keys, "Seeds that learned the task")
-    L += table(H, base, keys, "All seeds")
+    if len(learned) < len(H):
+        L += table(H, base, keys, "All seeds")
 
     # oracle-recovery ratio on unseen levels (learned seeds)
     if learned:
@@ -153,9 +154,49 @@ def main():
                     es = [h["levels"][str(l)]["sensitivity"][rule][i] for h in learned]
                     cells.append(f"{100*np.mean([e['acc'] for e in es]):.0f} ({np.mean([e['mean_T'] for e in es]):.0f})")
                 L.append(f"| {rule} = {params[i]:.3g} | " + " | ".join(cells) + " |")
+    # Mixed-difficulty workload: every test level equally likely. A deployable fixed-T model
+    # must use ONE T for all inputs; compare rules against that whole fixed-T curve.
+    mix = {}
+    for h in H:
+        apt = np.array([h["levels"][str(l)]["acc_per_T"] for l in TEST_LEVELS])        # [L, T]
+        blk = np.array([(get(h, l, "fixed16")[1] - get(h, l, "fixed8")[1]) / 8 for l in TEST_LEVELS])
+        hd = np.array([get(h, l, "fixed8")[1] for l in TEST_LEVELS]) - 8 * blk
+        Ts = np.arange(1, T_MAX + 1)
+        mix.setdefault("fixed_acc", []).append(apt.mean(0))
+        mix.setdefault("fixed_flops", []).append((Ts[None] * blk[:, None] + hd[:, None]).mean(0))
+        for k in ["oracle"] + RULES:
+            mix.setdefault(k, []).append((np.mean([get(h, l, k)[0] for l in TEST_LEVELS]),
+                                          np.mean([get(h, l, k)[1] for l in TEST_LEVELS])))
+    fa, ff = np.mean(mix["fixed_acc"], 0), np.mean(mix["fixed_flops"], 0)
+    bestT = int(fa.argmax()) + 1
+    L += ["\n## Mixed-difficulty workload (all 8 test levels equally weighted; mean over seeds)\n",
+          "A deployable fixed-T model must use one T for every input. `best fixed T at ≤ FLOPs` = the most "
+          "accurate single T whose mean FLOPs do not exceed the rule's (chosen with test data, so it favours "
+          "the fixed-T baseline).\n",
+          f"Best single fixed T overall: T={bestT}, {100*fa[bestT-1]:.1f}% at {ff[bestT-1]:.2e} FLOPs.\n",
+          "| method | mean acc % | mean FLOPs/answer | best fixed T at ≤ FLOPs | its acc % |", "|---|---|---|---|---|"]
+    for k in ["oracle"] + RULES:
+        a = np.mean([v[0] for v in mix[k]]); f = np.mean([v[1] for v in mix[k]])
+        ok = np.nonzero(ff <= f)[0]
+        if len(ok):
+            j = ok[fa[ok].argmax()]
+            L.append(f"| {k} | {100*a:.1f} | {f:.2e} | T={j+1} | {100*fa[j]:.1f} |")
+        else:
+            L.append(f"| {k} | {100*a:.1f} | {f:.2e} | – | – |")
+    fig, ax = plt.subplots(figsize=(6.4, 4))
+    ax.plot(ff, fa, color=STYLE["fixed8"]["color"], marker=".", label="C, one fixed T for all inputs (T=1…64)")
+    for k in ["oracle"] + PLOT_RULES + ["probe_safe"]:
+        a = np.mean([v[0] for v in mix[k]]); f = np.mean([v[1] for v in mix[k]])
+        st = STYLE[k]
+        ax.plot([f], [a], marker=st["marker"], color=st["color"], linestyle="none", markersize=9,
+                markeredgecolor="white", label=st["label"])
+    ax.set_xscale("log"); ax.set_xlabel("mean inference FLOPs per answer"); ax.set_ylabel("mean accuracy (2–30 hops)")
+    ax.set_title("Mixed-difficulty workload: adaptive vs fixed iterations"); ax.legend(fontsize=7, frameon=False)
+    fig.tight_layout(); fig.savefig(f"{OUT}/halting_mixed_pareto.png", dpi=150); plt.close(fig)
+
     if os.path.exists("results/halting/latency.json"):
         lj = json.load(open("results/halting/latency.json"))
-        L += [f"\n## Early-exit wall clock (seed {lj['seed']}, batch 1, 1 thread, fixed-point rule ε={lj['eps']:.3g})\n",
+        L += [f"\n## Early-exit wall clock (seed {lj['seed']}, batch 1, 1 thread, rule {lj['rule']} τ={lj['tau']})\n",
               "| hops | mode | median ms | mean T |", "|---|---|---|---|"]
         L += [f"| {r['level']} | {r['mode']} | {r['median_ms']:.2f} | {r['mean_T']:.1f} |" for r in lj["results"]]
     open("results/halting/summary.md", "w").write("\n".join(L) + "\n")

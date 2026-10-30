@@ -198,6 +198,8 @@ def run(seed):
                    for p in grid for T in [stop_times(rule, tr, p, probe)]]
             for rule, grid in (("fixedpoint", EPS_GRID), ("stable", M_GRID), ("probe", TAU_GRID))}
         levels[l] = r
+    pinfo["weight"] = probe.weight.flatten().tolist()
+    pinfo["bias"] = float(probe.bias)
     out = dict(seed=seed, model=MODEL, t_max=T_MAX, probe=pinfo, calibration=cal, levels=levels,
                train=json.load(open(os.path.join(run_dir(TASK, MODEL, seed), "train.json")))["examples"])
     os.makedirs("results/halting", exist_ok=True)
@@ -208,11 +210,13 @@ def run(seed):
 
 @torch.no_grad()
 def latency(seed=0, levels=(6, 12, 24), reps=40):
-    """Wall-clock check that early exit really saves time (batch 1, one thread)."""
+    """Wall-clock check that early exit with the calibrated probe (safe) really saves time
+    versus fixed T (batch 1, one thread). Accuracy is not re-measured here."""
     torch.set_num_threads(1)
     model = load(seed)
-    cal = json.load(open(f"results/halting/C_s{seed}.json"))["calibration"]["chosen"]
-    eps = cal["fixedpoint"]["param"]
+    saved = json.load(open(f"results/halting/C_s{seed}.json"))
+    tau = saved["calibration"]["chosen"]["probe_safe"]["param"]
+    w = torch.tensor(saved["probe"]["weight"]); bias = saved["probe"]["bias"]
     res = []
     for l, b in eval_sets(TASK, list(levels), reps).items():
         def run_one(i, mode):
@@ -220,13 +224,13 @@ def latency(seed=0, levels=(6, 12, 24), reps=40):
             e = model.embed(x); h = e
             for t in range(1, T_MAX + 1):
                 hn = model.state_norm(model.block(h + e, None))
-                if mode == "fixedpoint" and t >= 2 and float((hn - h).norm() / hn.norm()) < eps:
-                    h = hn; break
                 h = hn
+                if mode == "probe" and float(torch.sigmoid(h[0, -1] @ w + bias)) > tau:
+                    break
                 if mode == "fixed16" and t == 16:
                     break
             return model.head(h[:, -1]).argmax(-1), t
-        for mode in ("fixedpoint", "fixed16", "fixed64"):
+        for mode in ("probe", "fixed16", "fixed64"):
             for i in range(3):
                 run_one(i, mode)
             ts, Ts = [], []
@@ -235,7 +239,7 @@ def latency(seed=0, levels=(6, 12, 24), reps=40):
             res.append(dict(level=l, mode=mode, median_ms=1e3 * float(np.median(ts)), mean_T=float(np.mean(Ts))))
             print(res[-1])
     with open("results/halting/latency.json", "w") as f:
-        json.dump(dict(threads=1, seed=seed, eps=eps, results=res), f, indent=1)
+        json.dump(dict(threads=1, seed=seed, rule="probe_safe", tau=tau, results=res), f, indent=1)
 
 
 if __name__ == "__main__":

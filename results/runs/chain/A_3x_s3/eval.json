@@ -1,0 +1,95 @@
+{
+ "task": "chain",
+ "model": "A_3x",
+ "seed": 3,
+ "levels": {
+  "2": {
+   "level": 2,
+   "ood": false,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 2917376,
+     "acc": 1.0
+    }
+   ]
+  },
+  "4": {
+   "level": 4,
+   "ood": false,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 4629504,
+     "acc": 0.9919999837875366
+    }
+   ]
+  },
+  "6": {
+   "level": 6,
+   "ood": false,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 6374400,
+     "acc": 0.4860000014305115
+    }
+   ]
+  },
+  "8": {
+   "level": 8,
+   "ood": true,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 8152064,
+     "acc": 0.10599999874830246
+    }
+   ]
+  },
+  "12": {
+   "level": 12,
+   "ood": true,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 11805696,
+     "acc": 0.10199999809265137
+    }
+   ]
+  },
+  "16": {
+   "level": 16,
+   "ood": true,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 15590400,
+     "acc": 0.10000000149011612
+    }
+   ]
+  },
+  "24": {
+   "level": 24,
+   "ood": true,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 23553024,
+     "acc": 0.1080000028014183
+    }
+   ]
+  },
+  "30": {
+   "level": 30,
+   "ood": true,
+   "points": [
+    {
+     "iters": 4,
+     "flops": 29869056,
+     "acc": 0.1080000028014183
+    }
+   ]
+  }
+ }
+}

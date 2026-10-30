@@ -13,15 +13,21 @@ language models.
 
 - Literature review, what is and is not novel, and hypotheses: [RESEARCH.md](RESEARCH.md)
 - Results, analysis and limitations: [results/RESULTS.md](results/RESULTS.md)
-- Generated tables (all numbers): [results/summary.md](results/summary.md); plots in `results/plots/`
+- Generated tables (all numbers): [results/summary.md](results/summary.md),
+  [results/halting/summary.md](results/halting/summary.md) (Experiment 2); plots in `results/plots/`
 
 ## Headline results (details and caveats in results/RESULTS.md)
 
 - The **looped Transformer (C)** was the only model that extrapolated to harder chain
   problems, when given more test-time iterations (iteration count picked per level, oracle).
-  Trained on 1–6 hops, it reached 96–99% at 8 hops, and 97% at 12 / 96% at 16 hops with
-  3× training budget. At equal FLOPs it beat an 8-layer non-recurrent Transformer on 2 of 3
-  seeds, with 5× fewer parameters.
+  Trained on 1–6 hops, it reached 96–99% at 8 hops; with 3× training budget the best seeds
+  reached 97% at 12 hops, but only 2 of 5 seeds extrapolated that far. At equal FLOPs it beat
+  an 8-layer non-recurrent Transformer on 2 of 3 seeds, with 5× fewer parameters.
+- **Experiment 2 (stopping rules):** a cheap learned halting probe, calibrated only on
+  in-distribution data, recovers 75–85% of the oracle's gain at 12–30 hops, and its iteration
+  count grows with difficulty. It does **not** beat a single well-chosen fixed iteration count
+  on a mixed-difficulty workload: adaptive stopping matched the fixed-T compute curve and did
+  not improve on it. A convergence (fixed-point) rule calibrated on easy data failed out of distribution.
 - The **latent recursive reasoner (D)**, a TRM-style two-state recursion with deep supervision
   and halting, showed **no** advantage. It stayed at chance on chain at the matched training
   budget, did not extrapolate even with 3× budget, and on addition solved everything in its
@@ -75,6 +81,7 @@ python train.py    --task chain --model D --seed 0     # trains to the 8e12-FLOP
 python evaluate.py --task chain --model D --seed 0     # accuracy x compute on all levels
 python benchmark.py                                    # latency, memory, FLOP cross-check
 python analysis/plots.py                               # tables + plots
+bash run_halting.sh                                    # Experiment 2: stopping rules (~1 h)
 ```
 
 Seeds 0, 1, 2 for main models; ablations use seed 0. Training uses one thread per run
